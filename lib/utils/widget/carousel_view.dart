@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import '../../models/product_variation.dart';
 import 'carousel_card.dart';
 
-Widget carouselView(context ,int index, ProductVariation product,pageController) {
+Widget carouselView(
+    context, int index, ProductVariation product, pageController) {
   return AnimatedBuilder(
     animation: pageController,
     builder: (context, child) {
@@ -16,7 +17,7 @@ Widget carouselView(context ,int index, ProductVariation product,pageController)
       }
       return Transform.rotate(
         angle: pi * value,
-        child: carouselCard(context,product, index),
+        child: carouselCard(context, product, index),
       );
     },
   );

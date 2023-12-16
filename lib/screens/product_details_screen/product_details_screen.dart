@@ -1,11 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:slash_task/provider/product_details_provider.dart';
-import 'package:slash_task/utils/const.dart';
+import 'package:slash_task/utils/app_color.dart';
+import 'package:slash_task/utils/widget/button.dart';
 import 'package:slash_task/utils/widget/color_container.dart';
 import 'package:slash_task/utils/widget/image_slider.dart';
+import 'package:slash_task/utils/widget/property_button.dart';
+import '../../utils/app_images.dart';
+import '../../utils/text_styles.dart';
 import '../../utils/widget/carousel_view.dart';
 import '../../utils/widget/loading_widget.dart';
 
@@ -28,9 +32,7 @@ class ProductDetailsScreen extends StatelessWidget {
         ),
         title: Text(
           "Product details",
-          style: GoogleFonts.raleway(
-            fontWeight: FontWeight.w800,
-          ),
+          style: ralewayW800(),
         ),
       ),
       body: Container(
@@ -77,7 +79,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 100,
+                height: 80.h,
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
@@ -97,11 +99,11 @@ class ProductDetailsScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                padding: EdgeInsets.symmetric(horizontal: 20.0.w),
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 80,
+                      height: 70.h,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -110,19 +112,12 @@ class ProductDetailsScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "product name ",
-                                style: GoogleFonts.raleway(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                ),
+                                productProvider.products[1].name,
+                                style: raleway25W700(),
                               ),
                               Text(
-                                "EGP 720",
-                                style: GoogleFonts.raleway(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                ),
+                                "EGP ${productProvider.products[1].variations[productProvider.tappedIndex].price}",
+                                style: ralewayW600(),
                               ),
                             ],
                           ),
@@ -131,11 +126,10 @@ class ProductDetailsScreen extends StatelessWidget {
                             children: [
                               CircleAvatar(
                                 backgroundColor: Colors.black,
-                                radius: 30,
+                                radius: 30.sp,
                                 child: ClipOval(
                                   child: CachedNetworkImage(
-                                    imageUrl:
-                                        "https://i.pinimg.com/736x/0d/55/69/0d5569dd8aa0fbe7cc6ae23961de367f.jpg",
+                                    imageUrl: AppImages.brandLogo,
                                     progressIndicatorBuilder:
                                         (context, url, downloadProgress) =>
                                             const Loading(),
@@ -146,112 +140,95 @@ class ProductDetailsScreen extends StatelessWidget {
                               ),
                               Text(
                                 "brand name",
-                                style: GoogleFonts.raleway(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                ),
+                                style: ralewayW600(),
                               ),
                             ],
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     SizedBox(
-                      height: 23,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemCount:
-                            productProvider.products[1].variations.length,
-                        itemBuilder: (context, index) {
-                          final availableProperties = productProvider
-                              .products[1].availableProperties[0];
+                      height: 15.h,
+                    ),
+                    (productProvider.products[1].availableProperties[0].colors
+                                ?.length ==
+                            null)
+                        ? const SizedBox()
+                        : SizedBox(
+                            height: 18.h,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              itemCount:
+                                  productProvider.products[1].variations.length,
+                              itemBuilder: (context, index) {
+                                final availableProperties = productProvider
+                                    .products[1].availableProperties[0];
 
-                          return ColorContainer(
-                              index, availableProperties.colors![index]);
-                        },
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Select Size",
-                              style: GoogleFonts.raleway(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
+                                return ColorContainer(
+                                    index, availableProperties.colors![index]);
+                              },
                             ),
-                            Text(
-                              "Size Chart",
-                              style: GoogleFonts.raleway(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        SizedBox(
-                          height: 35,
-                          child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            itemCount: productProvider.products[1]
-                                .availableProperties[0].sizes!.length,
-                            itemBuilder: (context, index) {
-                              final availableProperties = productProvider
-                                  .products[1].availableProperties[0];
-                              return GestureDetector(
-                                onTap: () {
-                                  productProvider.onSizeTap(index);
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  decoration: BoxDecoration(
-                                    color: productProvider.sizeSelectedIndex ==
-                                            index
-                                        ? AppConst.base
-                                        : Colors.black,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Text(
-                                    availableProperties.sizes![index],
-                                    style: GoogleFonts.raleway(
-                                      fontWeight: FontWeight.w600,
-                                      color:
-                                          productProvider.sizeSelectedIndex ==
-                                                  index
-                                              ? Colors.black
-                                              : Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return const SizedBox(
-                                width: 10,
-                              );
-                            },
                           ),
-                        ),
-                      ],
+                    SizedBox(
+                      height: 20.h,
                     ),
-                    const SizedBox(
-                      height: 20,
+                    (productProvider.products[1].availableProperties[0].sizes
+                                ?.length ==
+                            null)
+                        ? const SizedBox()
+                        : Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Select Size",
+                                    style: ralewayW600(),
+                                  ),
+                                  Text(
+                                    "Size Chart",
+                                    style: ralewayW600(),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              SizedBox(
+                                height: 35,
+                                child: ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: productProvider.products[1]
+                                      .availableProperties[0].sizes!.length,
+                                  itemBuilder: (context, index) {
+                                    final availableProperties = productProvider
+                                        .products[1].availableProperties[0];
+                                    return PropertyButton(
+                                        color:
+                                            productProvider.sizeSelectedIndex ==
+                                                    index
+                                                ? AppConst.base
+                                                : Colors.white12,
+                                        text: availableProperties.sizes![index],
+                                        onTap: () {
+                                          productProvider.onSizeTap(index);
+                                        });
+                                  },
+                                  separatorBuilder:
+                                      (BuildContext context, int index) {
+                                    return SizedBox(
+                                      width: 6.w,
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                    SizedBox(
+                      height: 20.h,
                     ),
                     Column(
                       children: [
@@ -259,39 +236,22 @@ class ProductDetailsScreen extends StatelessWidget {
                           width: double.infinity,
                           child: Text(
                             "Select Material",
-                            style: GoogleFonts.raleway(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
+                            style: ralewayW600(),
                             textAlign: TextAlign.start,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 20.h,
                     ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
-                        decoration: BoxDecoration(
-                          color: AppConst.base,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          productProvider
-                              .products[1].availableProperties[0].material,
-                          style: GoogleFonts.raleway(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
+                    PropertyButton(
+                      color: AppConst.base,
+                      text: productProvider
+                          .products[1].availableProperties[0].material,
                     ),
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 10.h,
                     ),
                     Container(
                       decoration: const BoxDecoration(
@@ -299,49 +259,33 @@ class ProductDetailsScreen extends StatelessWidget {
                         color: Colors.white12,
                       ),
                       child: ExpansionTile(
-                          shape: const OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(12.0)),
-                          ),
-                          backgroundColor: Colors.white12,
-                          iconColor: Colors.white,
-                          collapsedIconColor: Colors.white,
-                          childrenPadding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 20),
-                          expandedCrossAxisAlignment: CrossAxisAlignment.end,
-                          title: const Text(
-                            "Description",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          children: [
-                            Text(
-                              productProvider.products[1].description,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            // This button is used to remove this item
-                          ]),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      height: 35,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color?>(AppConst.base),
+                        shape: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
                         ),
-                        onPressed: () {},
-                        child: Text(
-                          "Add To Cart",
-                          style: GoogleFonts.raleway(
-                              fontWeight: FontWeight.w600, color: Colors.black),
+                        backgroundColor: Colors.white12,
+                        iconColor: Colors.white,
+                        collapsedIconColor: Colors.white,
+                        childrenPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 20),
+                        expandedCrossAxisAlignment: CrossAxisAlignment.end,
+                        title: Text(
+                          "Description",
+                          style: ralewayW600(),
                         ),
+                        children: [
+                          Text(
+                            productProvider.products[1].description,
+                            style: ralewayW600(),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          // This button is used to remove this item
+                        ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
+                    const Button(
+                      text: "Add To Cart",
                     ),
                   ],
                 ),

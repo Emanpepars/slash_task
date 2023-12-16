@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:slash_task/models/product_variation.dart';
 import 'package:slash_task/models/product_model.dart';
+import 'package:slash_task/utils/app_images.dart';
+import 'package:slash_task/utils/app_color.dart';
 
 import '../models/product_property_and_value.dart';
 import '../models/product_property.dart';
@@ -29,26 +31,24 @@ class ProductDetailsProvider extends ChangeNotifier {
           quantity: 6,
           inStock: true,
           productVariantImages: [
-            "assets/images/1/1.png",
+            AppImages.p1,
           ],
           productPropertiesValues: [
             ProductPropertyAndValue(value: 'material', property: "Denim"),
-            ProductPropertyAndValue(value: 'color', property: 'grey'),
+            //ProductPropertyAndValue(value: 'color', property: 'grey'),
             ProductPropertyAndValue(property: 'size', value: 'S'),
             ProductPropertyAndValue(property: 'size', value: 'M'),
             ProductPropertyAndValue(property: 'size', value: 'L'),
+            ProductPropertyAndValue(property: 'size', value: 'XL'),
           ],
         ),
       ],
       availableProperties: [
         ProductProperty(
-          colors: [
-            Colors.grey,
-            Colors.red,
-            Colors.green,
-            Colors.yellow,
-          ],
-          sizes: ['S', 'M', 'L'],
+          // colors: [
+          //   Colors.grey,
+          // ],
+          sizes: ['S', 'M', 'L', 'XL'],
           material: 'Denim',
         ),
       ],
@@ -67,12 +67,12 @@ class ProductDetailsProvider extends ChangeNotifier {
           quantity: 6,
           inStock: true,
           productVariantImages: [
-            "assets/images/2/2.1.1.png",
-            "assets/images/2/2.1.2.png",
+            AppImages.p211,
+            AppImages.p212,
           ],
           productPropertiesValues: [
             ProductPropertyAndValue(property: "material", value: "cotton"),
-            ProductPropertyAndValue(value: 'color', property: 'grey'),
+            ProductPropertyAndValue(value: 'color', property: '0xFFCBC0B6'),
             ProductPropertyAndValue(property: 'size', value: 'S'),
             ProductPropertyAndValue(property: 'size', value: 'M'),
             ProductPropertyAndValue(property: 'size', value: 'L'),
@@ -85,12 +85,12 @@ class ProductDetailsProvider extends ChangeNotifier {
           quantity: 6,
           inStock: true,
           productVariantImages: [
-            "assets/images/2/2.2.1.png",
-            "assets/images/2/2.2.2.png",
+            AppImages.p221,
+            AppImages.p222,
           ],
           productPropertiesValues: [
             ProductPropertyAndValue(property: "material", value: "cotton"),
-            ProductPropertyAndValue(value: 'color', property: 'grey'),
+            ProductPropertyAndValue(value: 'color', property: '0xFFD2D0C9'),
             ProductPropertyAndValue(property: 'size', value: 'S'),
             ProductPropertyAndValue(property: 'size', value: 'M'),
             ProductPropertyAndValue(property: 'size', value: 'L'),
@@ -103,14 +103,14 @@ class ProductDetailsProvider extends ChangeNotifier {
           quantity: 6,
           inStock: true,
           productVariantImages: [
-            "assets/images/2/2.3.1.png",
-            "assets/images/2/2.3.2.png",
-            "assets/images/2/2.3.3.png",
-            "assets/images/2/2.3.4.png",
+            AppImages.p231,
+            AppImages.p232,
+            AppImages.p233,
+            AppImages.p234,
           ],
           productPropertiesValues: [
             ProductPropertyAndValue(property: "material", value: "cotton"),
-            ProductPropertyAndValue(value: 'color', property: 'grey'),
+            ProductPropertyAndValue(value: 'color', property: '0xFF343434'),
             ProductPropertyAndValue(property: 'size', value: 'S'),
             ProductPropertyAndValue(property: 'size', value: 'M'),
             ProductPropertyAndValue(property: 'size', value: 'L'),
@@ -123,12 +123,12 @@ class ProductDetailsProvider extends ChangeNotifier {
           quantity: 6,
           inStock: true,
           productVariantImages: [
-            "assets/images/2/2.4.1.png",
-            "assets/images/2/2.4.2.png",
+            AppImages.p241,
+            AppImages.p242,
           ],
           productPropertiesValues: [
             ProductPropertyAndValue(property: "material", value: "cotton"),
-            ProductPropertyAndValue(value: 'color', property: 'grey'),
+            ProductPropertyAndValue(value: 'color', property: '0xFF5E7198'),
             ProductPropertyAndValue(property: 'size', value: 'S'),
             ProductPropertyAndValue(property: 'size', value: 'M'),
             ProductPropertyAndValue(property: 'size', value: 'L'),
@@ -141,12 +141,12 @@ class ProductDetailsProvider extends ChangeNotifier {
           quantity: 6,
           inStock: true,
           productVariantImages: [
-            "assets/images/2/2.5.1.png",
-            "assets/images/2/2.5.2.png",
+            AppImages.p251,
+            AppImages.p252,
           ],
           productPropertiesValues: [
             ProductPropertyAndValue(property: "material", value: "cotton"),
-            ProductPropertyAndValue(value: 'color', property: 'grey'),
+            ProductPropertyAndValue(value: 'color', property: '0xFFFFFFFF'),
             ProductPropertyAndValue(property: 'size', value: 'S'),
             ProductPropertyAndValue(property: 'size', value: 'M'),
             ProductPropertyAndValue(property: 'size', value: 'L'),
@@ -159,27 +159,103 @@ class ProductDetailsProvider extends ChangeNotifier {
           quantity: 6,
           inStock: true,
           productVariantImages: [
-            "assets/images/2/2.6.1.png",
-            "assets/images/2/2.6.2.png",
+            AppImages.p261,
+            AppImages.p262,
           ],
           productPropertiesValues: [
             ProductPropertyAndValue(property: "material", value: "cotton"),
-            ProductPropertyAndValue(value: 'color', property: 'grey'),
+            ProductPropertyAndValue(value: 'color', property: '0xFFBD8A59'),
             ProductPropertyAndValue(property: 'size', value: 'S'),
             ProductPropertyAndValue(property: 'size', value: 'M'),
             ProductPropertyAndValue(property: 'size', value: 'L'),
+          ],
+        ),
+      ],
+      availableProperties: [
+        ProductProperty(
+          colors: [
+            AppConst.p2c1,
+            AppConst.p2c2,
+            AppConst.p2c3,
+            AppConst.p2c4,
+            AppConst.p2c5,
+            AppConst.p2c6,
+          ],
+          sizes: ['S', 'M', 'L'],
+          material: 'Cotton',
+        ),
+      ],
+    ),
+    Product(
+      id: 3,
+      name: "Denim Hoodie",
+      description: "Washed Denim Spots Over sized Hoodie",
+      brandId: 33,
+      rating: 4.9,
+      variations: [
+        ProductVariation(
+          id: 333,
+          productId: 3,
+          price: 795,
+          quantity: 6,
+          inStock: true,
+          productVariantImages: [
+            "assets/images/3/3.1.1.png",
+            "assets/images/3/3.1.2.png",
+            "assets/images/3/3.1.3.png",
+          ],
+          productPropertiesValues: [
+            ProductPropertyAndValue(value: "color", property: "0xFF3A3C4A"),
+            ProductPropertyAndValue(value: "size", property: "S"),
+            ProductPropertyAndValue(value: "size", property: "M"),
+            ProductPropertyAndValue(value: "size", property: "L"),
+            ProductPropertyAndValue(value: "size", property: "XL"),
+            ProductPropertyAndValue(value: "material", property: "cotton"),
+          ],
+        ),
+        ProductVariation(
+          id: 333,
+          productId: 3,
+          price: 795,
+          quantity: 6,
+          inStock: true,
+          productVariantImages: [
+            "assets/images/3/3.2.png",
+          ],
+          productPropertiesValues: [
+            ProductPropertyAndValue(value: "color", property: "0xFF100E0A"),
+            ProductPropertyAndValue(value: "size", property: "S"),
+            ProductPropertyAndValue(value: "size", property: "M"),
+            ProductPropertyAndValue(value: "size", property: "L"),
+            ProductPropertyAndValue(value: "size", property: "XL"),
+            ProductPropertyAndValue(value: "material", property: "cotton"),
+          ],
+        ),
+        ProductVariation(
+          id: 333,
+          productId: 3,
+          price: 795,
+          quantity: 6,
+          inStock: true,
+          productVariantImages: [
+            "assets/images/3/3.3.png",
+          ],
+          productPropertiesValues: [
+            ProductPropertyAndValue(value: "color", property: "0xFFE8E4E3"),
+            ProductPropertyAndValue(value: "size", property: "S"),
+            ProductPropertyAndValue(value: "size", property: "M"),
+            ProductPropertyAndValue(value: "size", property: "L"),
+            ProductPropertyAndValue(value: "size", property: "XL"),
+            ProductPropertyAndValue(value: "material", property: "cotton"),
           ],
         ),
       ],
       availableProperties: [
         ProductProperty(
           colors: const [
-            Color(0xFFCBC0B6),
-            Color(0xFFD2D0C9),
-            Color(0xB5000000),
-            Color(0xFF5E7198),
-            Color(0xFFFFFFFF),
-            Color(0xFFBD8A59),
+            Color(0xFF3A3C4A),
+            Color(0xFF100E0A),
+            Color(0xFFE8E4E3),
           ],
           sizes: ['S', 'M', 'L'],
           material: 'Cotton',
@@ -187,20 +263,50 @@ class ProductDetailsProvider extends ChangeNotifier {
       ],
     ),
     Product(
-      id: 1,
+      id: 4,
       name: "Denim Hoodie",
       description: "Washed Denim Spots Over sized Hoodie",
-      brandId: 11,
+      brandId: 44,
       rating: 4.9,
       variations: [
         ProductVariation(
-          id: 111,
-          productId: 1,
+          id: 444,
+          productId: 4,
           price: 795,
           quantity: 6,
           inStock: true,
           productVariantImages: [
-            "assets/images/1/1.png",
+            "assets/images/4/4.1.1.png",
+            "assets/images/4/4.1.2.png",
+            "assets/images/4/4.1.3.png",
+          ],
+          productPropertiesValues: [
+            ProductPropertyAndValue(value: "value", property: "property"),
+          ],
+        ),
+        ProductVariation(
+          id: 444,
+          productId: 4,
+          price: 795,
+          quantity: 6,
+          inStock: true,
+          productVariantImages: [
+            "assets/images/4/4.2.1.png",
+            "assets/images/4/4.2.2.png",
+          ],
+          productPropertiesValues: [
+            ProductPropertyAndValue(value: "value", property: "property"),
+          ],
+        ),
+        ProductVariation(
+          id: 444,
+          productId: 4,
+          price: 795,
+          quantity: 6,
+          inStock: true,
+          productVariantImages: [
+            "assets/images/4/4.3.1.png",
+            "assets/images/4/4.3.2.png",
           ],
           productPropertiesValues: [
             ProductPropertyAndValue(value: "value", property: "property"),
@@ -209,13 +315,10 @@ class ProductDetailsProvider extends ChangeNotifier {
       ],
       availableProperties: [
         ProductProperty(
-          colors: [
-            Colors.grey,
-            Colors.yellow,
-            Colors.blue,
-            Colors.green,
-            Colors.red,
-            Colors.pink
+          colors: const [
+            Color(0xFF3A393D),
+            Color(0xFF8D9195),
+            Color(0xFFCFC6AA),
           ],
           sizes: ['S', 'M', 'L'],
           material: 'Cotton',
@@ -223,20 +326,35 @@ class ProductDetailsProvider extends ChangeNotifier {
       ],
     ),
     Product(
-      id: 1,
+      id: 5,
       name: "Denim Hoodie",
       description: "Washed Denim Spots Over sized Hoodie",
-      brandId: 11,
+      brandId: 55,
       rating: 4.9,
       variations: [
         ProductVariation(
-          id: 111,
-          productId: 1,
+          id: 555,
+          productId: 5,
           price: 795,
           quantity: 6,
           inStock: true,
           productVariantImages: [
-            "assets/images/1/1.png",
+            "assets/images/5/5.1.1.png",
+            "assets/images/5/5.1.2.png",
+          ],
+          productPropertiesValues: [
+            ProductPropertyAndValue(value: "value", property: "property"),
+          ],
+        ),
+        ProductVariation(
+          id: 555,
+          productId: 5,
+          price: 795,
+          quantity: 6,
+          inStock: true,
+          productVariantImages: [
+            "assets/images/5/5.2.1.png",
+            "assets/images/5/5.2.2.png",
           ],
           productPropertiesValues: [
             ProductPropertyAndValue(value: "value", property: "property"),
@@ -245,112 +363,20 @@ class ProductDetailsProvider extends ChangeNotifier {
       ],
       availableProperties: [
         ProductProperty(
-          colors: [
-            Colors.grey,
-            Colors.yellow,
-            Colors.blue,
-            Colors.green,
-            Colors.red,
-            Colors.pink
+          colors: const [
+            Color(0xFFE8E4D9),
+            Color(0xFF9E766B),
           ],
           sizes: ['S', 'M', 'L'],
           material: 'Cotton',
         ),
-      ],
-    ),
-    Product(
-      id: 1,
-      name: "Denim Hoodie",
-      description: "Washed Denim Spots Over sized Hoodie",
-      brandId: 11,
-      rating: 4.9,
-      variations: [
-        ProductVariation(
-          id: 111,
-          productId: 1,
-          price: 795,
-          quantity: 6,
-          inStock: true,
-          productVariantImages: [
-            "assets/images/1/1.png",
-          ],
-          productPropertiesValues: [
-            ProductPropertyAndValue(value: "value", property: "property"),
-          ],
-        ),
-      ],
-      availableProperties: [
-        ProductProperty(
-          colors: [
-            Colors.grey,
-            Colors.yellow,
-            Colors.blue,
-            Colors.green,
-            Colors.red,
-            Colors.pink
-          ],
-          sizes: ['S', 'M', 'L'],
-          material: 'Cotton',
-        ),
-      ],
-    ),
-    Product(
-      id: 1,
-      name: "Denim Hoodie",
-      description: "Washed Denim Spots Over sized Hoodie",
-      brandId: 11,
-      rating: 4.9,
-      variations: [
-        ProductVariation(
-          id: 111,
-          productId: 1,
-          price: 795,
-          quantity: 6,
-          inStock: true,
-          productVariantImages: [
-            "assets/images/1/1.png",
-          ],
-          productPropertiesValues: [
-            ProductPropertyAndValue(property: "material", value: "cotton"),
-            ProductPropertyAndValue(property: "material", value: "cotton"),
-            ProductPropertyAndValue(property: "material", value: "cotton"),
-          ],
-        ),
-      ],
-      availableProperties: [
-        ProductProperty(colors: [], material: 'cotton'),
-      ],
-    ),
-    Product(
-      id: 1,
-      name: "Denim Hoodie",
-      description: "Washed Denim Spots Over sized Hoodie",
-      brandId: 11,
-      rating: 4.9,
-      variations: [
-        ProductVariation(
-          id: 111,
-          productId: 1,
-          price: 795,
-          quantity: 6,
-          inStock: true,
-          productVariantImages: [
-            "assets/images/1/1.png",
-          ],
-          productPropertiesValues: [
-            ProductPropertyAndValue(value: "value", property: "property"),
-          ],
-        ),
-      ],
-      availableProperties: [
-        ProductProperty(material: 'cotton'),
       ],
     ),
   ];
 
   void onPageChanged(int value) {
     pageView = value;
-    onSliderTap(value);
+    tappedIndex = value;
     notifyListeners();
   }
 
@@ -361,7 +387,7 @@ class ProductDetailsProvider extends ChangeNotifier {
       pageController.animateToPage(
         index,
         duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
+        curve: Curves.fastEaseInToSlowEaseOut,
       );
       notifyListeners();
     }
@@ -369,6 +395,7 @@ class ProductDetailsProvider extends ChangeNotifier {
 
   void onColorTap(int index) {
     colorIndex = index;
+    onSliderTap(0);
     notifyListeners();
   }
 

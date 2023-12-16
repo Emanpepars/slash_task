@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../models/product_variation.dart';
-import '../const.dart';
+import '../app_color.dart';
 
 Widget imageSlider(
   int index,
