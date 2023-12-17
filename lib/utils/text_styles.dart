@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-TextStyle ralewayW800() => GoogleFonts.raleway(
+TextStyle quicksandW800() => GoogleFonts.quicksand(
       fontWeight: FontWeight.w800,
     );
 
-TextStyle raleway25W700() => GoogleFonts.raleway(
+TextStyle quicksand25W700() => GoogleFonts.quicksand(
       fontWeight: FontWeight.w700,
       color: Colors.white,
       fontSize: 25,
     );
 
-TextStyle ralewayW600({Color color = Colors.white}) => GoogleFonts.raleway(
+TextStyle quicksandW600({Color color = Colors.white ,double size = 16}) => GoogleFonts.quicksand(
       fontWeight: FontWeight.w600,
       color: color,
+  fontSize: size,
     );
 
-TextStyle raleway16W600({Color color = Colors.white}) => GoogleFonts.raleway(
+TextStyle quicksand16W600({Color color = Colors.white}) => GoogleFonts.quicksand(
       fontWeight: FontWeight.w600,
       color: color,
       fontSize: 16,

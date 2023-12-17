@@ -8,6 +8,7 @@ Widget imageSlider(
   int index,
   ProductVariation productVariation,
   productProvider,
+  product,
 ) {
   return GestureDetector(
     onTap: () {
@@ -31,8 +32,8 @@ Widget imageSlider(
           ),
           borderRadius: BorderRadius.circular(15),
           image: DecorationImage(
-            image: AssetImage(productProvider
-                .products[1].variations[productProvider.colorIndex].productVariantImages[index]),
+            image: AssetImage(product.variations[productProvider.colorIndex]
+                .productVariantImages[index]),
             fit: BoxFit.cover,
           ),
         ),

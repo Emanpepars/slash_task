@@ -56,14 +56,14 @@ class ProductDetailsProvider extends ChangeNotifier {
     Product(
       id: 2,
       name: "Hoodie",
-      description: "Washed Denim Spots Over sized Hoodie",
+      description: "Cartoon Face Print Drop Shoulder Pullover",
       brandId: 22,
       rating: 4.9,
       variations: [
         ProductVariation(
           id: 222,
           productId: 2,
-          price: 795,
+          price: 450,
           quantity: 6,
           inStock: true,
           productVariantImages: [
@@ -188,15 +188,15 @@ class ProductDetailsProvider extends ChangeNotifier {
     ),
     Product(
       id: 3,
-      name: "Denim Hoodie",
-      description: "Washed Denim Spots Over sized Hoodie",
+      name: "Hoodie",
+      description: "Summer Women Clothes Oversize Korean Fashion",
       brandId: 33,
       rating: 4.9,
       variations: [
         ProductVariation(
           id: 333,
           productId: 3,
-          price: 795,
+          price: 800,
           quantity: 6,
           inStock: true,
           productVariantImages: [
@@ -264,15 +264,15 @@ class ProductDetailsProvider extends ChangeNotifier {
     ),
     Product(
       id: 4,
-      name: "Denim Hoodie",
-      description: "Washed Denim Spots Over sized Hoodie",
+      name: "Jacket",
+      description: "Reversible Oversize Fleece Hooded Jacket",
       brandId: 44,
       rating: 4.9,
       variations: [
         ProductVariation(
           id: 444,
           productId: 4,
-          price: 795,
+          price: 1500,
           quantity: 6,
           inStock: true,
           productVariantImages: [
@@ -327,15 +327,15 @@ class ProductDetailsProvider extends ChangeNotifier {
     ),
     Product(
       id: 5,
-      name: "Denim Hoodie",
-      description: "Washed Denim Spots Over sized Hoodie",
+      name: "Hoodie",
+      description: "Loose Solid Sweatshirt Over sized Harajuku Hoodie ",
       brandId: 55,
       rating: 4.9,
       variations: [
         ProductVariation(
           id: 555,
           productId: 5,
-          price: 795,
+          price: 350,
           quantity: 6,
           inStock: true,
           productVariantImages: [
@@ -399,7 +399,7 @@ class ProductDetailsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  onSizeTap(index) {
+  void onSizeTap(index) {
     sizeSelectedIndex = index;
     notifyListeners();
   }

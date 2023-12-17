@@ -2,37 +2,45 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:slash_task/config/routes/routes.dart';
+import 'package:slash_task/models/cart_item_model.dart';
+import 'package:slash_task/models/product_model.dart';
 import 'package:slash_task/provider/product_details_provider.dart';
 import 'package:slash_task/utils/app_color.dart';
 import 'package:slash_task/utils/widget/button.dart';
 import 'package:slash_task/utils/widget/color_container.dart';
 import 'package:slash_task/utils/widget/image_slider.dart';
 import 'package:slash_task/utils/widget/property_button.dart';
+import '../../provider/cart_provider.dart';
 import '../../utils/app_images.dart';
 import '../../utils/text_styles.dart';
 import '../../utils/widget/carousel_view.dart';
 import '../../utils/widget/loading_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  final Product product;
+
+  const ProductDetailsScreen(this.product, {super.key});
 
   @override
   Widget build(BuildContext context) {
     var productProvider = Provider.of<ProductDetailsProvider>(context);
-
+    var cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0.0,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(
             Icons.arrow_back_ios,
           ),
         ),
         title: Text(
           "Product details",
-          style: ralewayW800(),
+          style: quicksandW800(),
         ),
       ),
       body: Container(
@@ -50,11 +58,8 @@ class ProductDetailsScreen extends StatelessWidget {
                     productProvider.onPageChanged(value);
                   },
                   children: List.generate(
-                    productProvider
-                        .products[1]
-                        .variations[productProvider.colorIndex]
-                        .productVariantImages
-                        .length,
+                    product.variations[productProvider.colorIndex]
+                        .productVariantImages.length,
                     (index) => ShaderMask(
                       shaderCallback: (Rect bounds) {
                         return const LinearGradient(
@@ -70,8 +75,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       child: carouselView(
                         context,
                         index,
-                        productProvider
-                            .products[1].variations[productProvider.colorIndex],
+                        product.variations[productProvider.colorIndex],
                         productProvider.pageController,
                       ),
                     ),
@@ -83,17 +87,14 @@ class ProductDetailsScreen extends StatelessWidget {
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: productProvider
-                      .products[1]
-                      .variations[productProvider.colorIndex]
-                      .productVariantImages
-                      .length,
+                  itemCount: product.variations[productProvider.colorIndex]
+                      .productVariantImages.length,
                   itemBuilder: (context, index) {
                     return imageSlider(
                       index,
-                      productProvider
-                          .products[1].variations[productProvider.colorIndex],
+                      product.variations[productProvider.colorIndex],
                       productProvider,
+                      product,
                     );
                   },
                 ),
@@ -112,12 +113,12 @@ class ProductDetailsScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                productProvider.products[1].name,
-                                style: raleway25W700(),
+                                product.name,
+                                style: quicksand25W700(),
                               ),
                               Text(
-                                "EGP ${productProvider.products[1].variations[productProvider.tappedIndex].price}",
-                                style: ralewayW600(),
+                                "EGP ${product.variations[productProvider.tappedIndex].price}",
+                                style: quicksandW600(),
                               ),
                             ],
                           ),
@@ -140,7 +141,7 @@ class ProductDetailsScreen extends StatelessWidget {
                               ),
                               Text(
                                 "brand name",
-                                style: ralewayW600(),
+                                style: quicksandW600(),
                               ),
                             ],
                           ),
@@ -150,21 +151,17 @@ class ProductDetailsScreen extends StatelessWidget {
                     SizedBox(
                       height: 15.h,
                     ),
-                    (productProvider.products[1].availableProperties[0].colors
-                                ?.length ==
-                            null)
+                    (product.availableProperties[0].colors?.length == null)
                         ? const SizedBox()
                         : SizedBox(
                             height: 18.h,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               shrinkWrap: true,
-                              itemCount:
-                                  productProvider.products[1].variations.length,
+                              itemCount: product.variations.length,
                               itemBuilder: (context, index) {
-                                final availableProperties = productProvider
-                                    .products[1].availableProperties[0];
-
+                                final availableProperties =
+                                    product.availableProperties[0];
                                 return ColorContainer(
                                     index, availableProperties.colors![index]);
                               },
@@ -173,9 +170,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
-                    (productProvider.products[1].availableProperties[0].sizes
-                                ?.length ==
-                            null)
+                    (product.availableProperties[0].sizes?.length == null)
                         ? const SizedBox()
                         : Column(
                             children: [
@@ -185,11 +180,11 @@ class ProductDetailsScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     "Select Size",
-                                    style: ralewayW600(),
+                                    style: quicksandW600(),
                                   ),
                                   Text(
                                     "Size Chart",
-                                    style: ralewayW600(),
+                                    style: quicksandW600(),
                                   ),
                                 ],
                               ),
@@ -201,11 +196,11 @@ class ProductDetailsScreen extends StatelessWidget {
                                 child: ListView.separated(
                                   scrollDirection: Axis.horizontal,
                                   shrinkWrap: true,
-                                  itemCount: productProvider.products[1]
+                                  itemCount: product
                                       .availableProperties[0].sizes!.length,
                                   itemBuilder: (context, index) {
-                                    final availableProperties = productProvider
-                                        .products[1].availableProperties[0];
+                                    final availableProperties =
+                                        product.availableProperties[0];
                                     return PropertyButton(
                                         color:
                                             productProvider.sizeSelectedIndex ==
@@ -236,7 +231,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           width: double.infinity,
                           child: Text(
                             "Select Material",
-                            style: ralewayW600(),
+                            style: quicksandW600(),
                             textAlign: TextAlign.start,
                           ),
                         ),
@@ -247,8 +242,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     PropertyButton(
                       color: AppConst.base,
-                      text: productProvider
-                          .products[1].availableProperties[0].material,
+                      text: product.availableProperties[0].material,
                     ),
                     SizedBox(
                       height: 10.h,
@@ -270,22 +264,36 @@ class ProductDetailsScreen extends StatelessWidget {
                         expandedCrossAxisAlignment: CrossAxisAlignment.end,
                         title: Text(
                           "Description",
-                          style: ralewayW600(),
+                          style: quicksandW600(),
                         ),
                         children: [
                           Text(
-                            productProvider.products[1].description,
-                            style: ralewayW600(),
+                            product.description,
+                            style: quicksandW600(),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
-                          // This button is used to remove this item
                         ],
                       ),
                     ),
-                    const Button(
+                    Button(
                       text: "Add To Cart",
+                      onPressed: () {
+                        CartItemModel cartItem = CartItemModel(
+                          productVariationId:
+                              product.variations[productProvider.colorIndex].id,
+                          productId: product.id,
+                        );
+                        cartProvider.addToCart(
+                            cartItem,
+                            product
+                                .variations[productProvider.colorIndex].price);
+                        Navigator.pushNamed(
+                          context,
+                          Routes.cart,
+                        );
+                      },
                     ),
                   ],
                 ),
