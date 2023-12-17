@@ -35,7 +35,7 @@ class ProductDetailsProvider extends ChangeNotifier {
           ],
           productPropertiesValues: [
             ProductPropertyAndValue(value: 'material', property: "Denim"),
-            //ProductPropertyAndValue(value: 'color', property: 'grey'),
+            ProductPropertyAndValue(value: 'color', property: 'grey'),
             ProductPropertyAndValue(property: 'size', value: 'S'),
             ProductPropertyAndValue(property: 'size', value: 'M'),
             ProductPropertyAndValue(property: 'size', value: 'L'),
@@ -45,9 +45,9 @@ class ProductDetailsProvider extends ChangeNotifier {
       ],
       availableProperties: [
         ProductProperty(
-          // colors: [
-          //   Colors.grey,
-          // ],
+          colors: [
+            Colors.grey,
+          ],
           sizes: ['S', 'M', 'L', 'XL'],
           material: 'Denim',
         ),

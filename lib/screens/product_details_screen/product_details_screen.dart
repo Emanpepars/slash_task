@@ -104,7 +104,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 70.h,
+                      height: 72.h,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -155,7 +155,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         ? const SizedBox()
                         : SizedBox(
                             height: 18.h,
-                            child: ListView.builder(
+                            child: ListView.separated(
                               scrollDirection: Axis.horizontal,
                               shrinkWrap: true,
                               itemCount: product.variations.length,
@@ -165,6 +165,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                 return ColorContainer(
                                     index, availableProperties.colors![index]);
                               },
+                              separatorBuilder: (BuildContext context, int index) => SizedBox(width: 5.w,),
                             ),
                           ),
                     SizedBox(
