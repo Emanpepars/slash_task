@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/product_variation.dart';
-import '../../screens/product_details_screen/expanded_image_screen/expanded_image_screen.dart';
+import '../../screens/expanded_image_screen/expanded_image_screen.dart';
 
 Widget carouselCard(context, ProductVariation productVariation, int index) {
   return Hero(

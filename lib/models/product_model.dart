@@ -11,8 +11,8 @@ class Product {
   final String? brandLogoUrl;
   final double rating;
   final List<ProductVariation> variations;
-  final List<ProductProperty>
-      availableProperties; //What properties are offered //(multiple colors or non, multiple sizes or non, materials)
+  final List<ProductProperty> availableProperties;
+
   Product({
     required this.id,
     required this.name,

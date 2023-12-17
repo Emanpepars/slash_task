@@ -26,7 +26,7 @@ class PropertyButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: raleway16W600(
+          style: quicksand16W600(
             color: color == Colors.white12 ? Colors.white : Colors.black,
           ),
         ),

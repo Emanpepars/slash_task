@@ -25,7 +25,7 @@ class Button extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: raleway16W600(color: Colors.black),
+          style: quicksand16W600(color: Colors.black),
         ),
       ),
     );
